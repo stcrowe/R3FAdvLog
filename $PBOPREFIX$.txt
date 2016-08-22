@@ -1,0 +1,6 @@
+///////<HEADER>///////
+prefix=r3fAdvLog
+Mikero=DePbo.dll
+Pbo Type is: Arma Campaign addon
+Sha: 'B508681F6BD5A4C462796DF1D47697C3696A4D11'
+//////</HEADER>//////
