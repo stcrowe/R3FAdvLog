@@ -13,7 +13,7 @@
 
 params [["_object", objNull]];
 
-if (isNull _object) exitWith {["Error: Object is Null"] call AdvLog_fnc_globalMessage;};
+if (isNull _object) exitWith {};
 
 
 

@@ -38,7 +38,10 @@ class CfgFunctions
 		{
 			file = "r3fAdvLog\functions\r3f\creation";
 			class factoryInit {};
-
+			class factoryResell {};
+			class getCategoryList {};
+			class getClassList {};
+			class getCreationCosts {};
 		};
 
 		class general
@@ -50,6 +53,7 @@ class CfgFunctions
 			class setOwner {};
 			class setDir {};
 			class globalAddAction {};
+			class timerCheck {};
 		};
 
 		class object

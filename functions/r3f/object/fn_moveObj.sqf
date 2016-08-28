@@ -184,7 +184,8 @@ else
 
 					if (_object getVariable ["R3F_LOG_CF_depuis_factory", false]) then
 					{
-						_action_cancel = _player addAction [("<t color=""#bd1526"">Cancel Build</t>"), {R3F_LOG_player_moves_object setVariable["R3F_DeleteMe", true]; R3F_LOG_player_moves_object = objNull;}, nil, 6, false, false];
+						_action_cancel = _player addAction [format ["<t color=""#bd1526"">Return %1</t>", getText (configFile >> "CfgVehicles" >> (typeOf _object) >> "displayName")], {R3F_LOG_player_moves_object setVariable["R3F_DeleteMe", true]; R3F_LOG_player_moves_object = objNull;}, nil, 6, false, false];
+
 					};
 
 					// Rel?cher l'objet d?s que le joueur tire. Le detach sert ? rendre l'objet solide pour ne pas tirer au travers.
@@ -460,7 +461,7 @@ else
 					_player removeAction _action_aligner_horizon;
 					_player removeAction _action_tourner;
 					_player removeAction _action_rapprocher;
-					if (_object getVariable ["R3F_LOG_CF_depuis_factory", false]) then
+					if (!isNil "_action_cancel") then
 					{
 						_player removeAction _action_cancel;
 					};
@@ -472,6 +473,7 @@ else
 					else
 					{
 						_object setVariable ["R3F_LOG_is_moved_by", objNull, true];
+						_object setVariable ["R3F_LOG_CF_depuis_factory", false, true];
 					};
 				}
 				// Echec d'obtention de l'objet

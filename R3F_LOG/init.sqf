@@ -100,12 +100,6 @@
 	} forEach R3F_LOG_CFG_build_costs;
 
 
-	// Gestion compatibilit? fichier de config 3.0 => 3.1 (d?finition de valeurs par d?faut)
-	if (isNil "R3F_LOG_CFG_lock_objects_mode") then {R3F_LOG_CFG_lock_objects_mode = "side";};
-	if (isNil "R3F_LOG_CFG_unlock_objects_timer") then {R3F_LOG_CFG_unlock_objects_timer = 30;};
-	if (isNil "R3F_LOG_CFG_CF_sell_back_bargain_rate") then {R3F_LOG_CFG_CF_sell_back_bargain_rate = 0.75;};
-	if (isNil "R3F_LOG_CFG_CF_creation_cost_factor") then {R3F_LOG_CFG_CF_creation_cost_factor = [];};
-
 	/* FIN import config */
 
 	if (isServer) then
@@ -152,10 +146,7 @@
 		R3F_LOG_FNCT_factory_complete_list_objects = compile preprocessFile "r3fAdvLog\R3F_LOG\creation_factory\complete_list_objects.sqf";
 		R3F_LOG_FNCT_factory_create_object = compile preprocessFile "r3fAdvLog\R3F_LOG\creation_factory\create_object.sqf";
 		R3F_LOG_FNCT_factory_open_factory = compile preprocessFile "r3fAdvLog\R3F_LOG\creation_factory\open_factory.sqf";
-		R3F_LOG_FNCT_factory_resell_moves = compile preprocessFile "r3fAdvLog\R3F_LOG\creation_factory\resell_moves.sqf";
-		R3F_LOG_FNCT_factory_resell_selection = compile preprocessFile "r3fAdvLog\R3F_LOG\creation_factory\resell_selection.sqf";
-		R3F_LOG_FNCT_factory_resell_direct = compile preprocessFile "r3fAdvLog\R3F_LOG\creation_factory\resell_direct.sqf";
-		R3F_LOG_FNCT_determine_cost_creation = compile preprocessFile "r3fAdvLog\R3F_LOG\creation_factory\determine_cost_creation.sqf";
+
 
 		R3F_LOG_FNCT_format_number_of_integer_thousands = compile preprocessFile "r3fAdvLog\R3F_LOG\general_functions\format_number_of_integer_thousands.sqf";
 

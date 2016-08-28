@@ -27,7 +27,9 @@ _factory setVariable ["R3F_LOG_CF_mem_idx_object", 0];
 
 lbClear _ctrl_liste_objects;
 
-if (count (_factory getVariable "R3F_LOG_CF_cfgVehicles_par_categories") > 0) then
+_classList = [_factory, _sel_categorie] call AdvLog_fnc_getClassList;
+
+if ((count _classList) > 0) then
 {
 	// Insertion de chaque type d'objets disponibles dans la liste
 	{
@@ -38,7 +40,7 @@ if (count (_factory getVariable "R3F_LOG_CF_cfgVehicles_par_categories") > 0) th
 		_name = getText (_config >> "displayName");
 		_icone = getText (_config >> "icon");
 		//_cout = [_classe] call R3F_LOG_FNCT_determine_cost_creation;
-		_cout = ((_factory getVariable "R3F_LOG_CF_cfgVehicles_costs") select _sel_categorie) select _forEachIndex;
+		_cout = ([_factory, _sel_categorie, _forEachIndex] call AdvLog_fnc_getCreationCosts);
 
 		// Ic?ne par d?faut
 		if (_icone == "") then
@@ -75,7 +77,7 @@ if (count (_factory getVariable "R3F_LOG_CF_cfgVehicles_par_categories") > 0) th
 		_index = _ctrl_liste_objects lbAdd format ["%1 (%2 cred.)", _name, [_cout] call R3F_LOG_FNCT_format_number_of_integer_thousands];
 		_ctrl_liste_objects lbSetPicture [_index, _icone];
 		_ctrl_liste_objects lbSetData [_index, _classe];
-	} forEach (_factory getVariable "R3F_LOG_CF_cfgVehicles_par_categories" select _sel_categorie);
+	} forEach _classList;
 
 	// Ajout d'une ligne vide car l'affichage des listes de BIS est bugu? (dernier ?l?ment masqu?).....
 	_ctrl_liste_objects lbSetData [_ctrl_liste_objects lbAdd "", ""];

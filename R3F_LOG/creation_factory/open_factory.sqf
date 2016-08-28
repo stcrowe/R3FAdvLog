@@ -1,4 +1,5 @@
 /**
+ * Modified by Sean Crowe
  * Ouvre la bo?te de dialogue du contenu de l'usine
  *
  * @param 0 l'usine qu'il faut ouvrir
@@ -23,16 +24,6 @@ uiNamespace setVariable ["R3F_LOG_dlg_LO_factory", _factory];
 
 call R3F_LOG_VIS_FNCT_demarrer_visualisation;
 
-// Pr?-calculer une fois pour toutes les usines la liste des objets du CfgVehicles class?s par cat?gorie
-if (isNil {_factory getVariable "R3F_LOG_CF_cfgVehicles_par_categories"}) then
-{
-	private ["_retour_liste_cfgVehicles_par_categories"];
-
-	_factory setVariable ["R3F_LOG_CF_cfgVehicles_categories", + (R3F_CF_global_factory select 0)];
-	_factory setVariable ["R3F_LOG_CF_cfgVehicles_par_categories", + (R3F_CF_global_factory select 1)];
-	_factory setVariable ["R3F_LOG_CF_cfgVehicles_costs", + (R3F_CF_global_factory select 2)];
-};
-
 createDialog "R3F_LOG_dlg_liste_objects";
 _dlg_liste_objects = findDisplay R3F_LOG_IDD_dlg_liste_objects;
 
@@ -54,7 +45,7 @@ _sel_categorie = 0 max (_factory getVariable "R3F_LOG_CF_mem_idx_categorie");
 
 	_index = _ctrl_liste_categories lbAdd format ["%1", _name];
 	_ctrl_liste_categories lbSetData [_index, _categorie];
-} forEach (_factory getVariable "R3F_LOG_CF_cfgVehicles_categories");
+} forEach ([_factory] call AdvLog_fnc_getCategoryList);
 
 _ctrl_liste_categories lbSetCurSel _sel_categorie;
 
