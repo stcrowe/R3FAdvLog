@@ -55,4 +55,4 @@ R3F_LOG_CF_liste_factorys pushBack _factory;
 	[_factory, 0, ["ACE_MainActions"], _myaction] call ace_interact_menu_fnc_addActionToObject;
 
 // Add resell
-	_factory addAction [("<t color=""#dddd00"">" + format ["Return %1", getText (configFile >> "CfgVehicles" >> (typeOf _object) >> "displayName")] + "</t>"), {_this call AdvLog_fnc_factoryResell;}, nil, 10, true, true, "", "!R3F_LOG_mutex_local_lock && R3F_LOG_resell_load_valid_selection && (_this distance _target < 6)"];
+	//_factory addAction [("<t color=""#dddd00"">" + format ["Return %1", getText (configFile >> "CfgVehicles" >> (typeOf _object) >> "displayName")] + "</t>"), {_this call AdvLog_fnc_factoryResell;}, nil, 10, true, true, "", "!R3F_LOG_mutex_local_lock && R3F_LOG_resell_load_valid_selection && (_this distance _target < 6)"];

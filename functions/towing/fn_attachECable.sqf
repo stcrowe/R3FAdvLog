@@ -14,14 +14,14 @@ if([_vehicle, _player] call AdvLog_fnc_canTakeTowRopes) then {
 
 	};
 
-	_vehicle setVariable ["SA_RopeLength", 3, true];
+	_vehicle setVariable ["SA_RopeLength", 5, true];
 	[_player,1,["ACE_SelfActions", "ACE_Equipment", 'AdvTow_Drop']] call ace_interact_menu_fnc_removeActionFromObject;
 
 	private ["_existingTowRopes","_hitchPoint","_rope"];
 	_existingTowRopes = _vehicle getVariable ["SA_Tow_Ropes",[]];
 	if (count _existingTowRopes == 0) then {
 		_hitchPoint = [_vehicle] call AdvLog_fnc_getHitchPoints select 1;
-		_rope = ropeCreate [_vehicle, _hitchPoint, 3];
+		_rope = ropeCreate [_vehicle, _hitchPoint, 5];
 		_vehicle setVariable ["SA_Tow_Ropes",[_rope],true];
 		_this call AdvLog_fnc_pickupTowRopes;
 	};
