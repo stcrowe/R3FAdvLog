@@ -44,6 +44,7 @@
 	{
 		case "English":{"en"};
 		case "French":{"fr"};
+		case "German":{"ger"};
 
 		// Feel free to create you own language file named "XX_strings_lang.sqf", where "XX" is the language code.
 		// Make a copy of an existing language file (e.g. en_strings_lang.sqf) and translate it.
